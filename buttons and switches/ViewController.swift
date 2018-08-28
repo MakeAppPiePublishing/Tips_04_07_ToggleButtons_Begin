@@ -1,20 +1,54 @@
 //
 //  ViewController.swift
-//  buttons and switches
+//  Toggle buttons and switches
 //
-//  Created by Steven Lipton on 8/26/18.
-//  Copyright © 2018 Steven Lipton. All rights reserved.
+//
+//  An exercise file for iOS Development Tips Weekly
+//  by Steven Lipton (C)2018, All rights reserved
+//  For videos go to http://bit.ly/TipsLinkedInLearning
+//  For code go to http://bit.ly/AppPieGithub
 //
 
 import UIKit
 
-class ViewController: UIViewController {
 
+
+class ViewController: UIViewController {
+    @IBOutlet weak var basicSwitch: UISwitch!
+    
+   
+    var toggleButton: UIToggleButton!
+    
+    //Action when button recieves touchUpInside
+    @IBAction func didToggleButton(_ sender: UIToggleButton) {
+        
+    }
+    
+    //Configure the toggle button for this app.
+    func configureToggleButton()-> UIToggleButton{
+        let toggleButton = UIToggleButton()
+        toggleButton.setTitleColor(.gray, for: .normal)
+        toggleButton.setTitle("Off", for: .normal)
+        toggleButton.addTarget(self, action: #selector(didToggleButton(_:)), for: .touchUpInside)
+        return toggleButton
+    }
+    
+    //Add the button to the layout centered on the view.
+    func addToggleButton(to view:UIView) {
+        toggleButton = configureToggleButton()
+        view.addSubview(toggleButton)
+        toggleButton.translatesAutoresizingMaskIntoConstraints = false
+        var constraints = [NSLayoutConstraint]()
+        constraints += [NSLayoutConstraint.init(item: toggleButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerXWithinMargins, multiplier: 1.0, constant: 0)]
+         constraints += [NSLayoutConstraint.init(item: toggleButton, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerYWithinMargins, multiplier: 1.0, constant: 0)]
+         constraints += [NSLayoutConstraint.init(item: toggleButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 128)]
+        constraints += [NSLayoutConstraint.init(item: toggleButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 96)]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        addToggleButton(to: view)
     }
-
-
 }
 
