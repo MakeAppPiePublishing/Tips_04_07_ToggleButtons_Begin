@@ -12,5 +12,5 @@
 import UIKit
 
 class UIToggleButton:UIButton{
-   
+   //make a toggle button from a button here
 }
