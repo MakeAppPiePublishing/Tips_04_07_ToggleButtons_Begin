@@ -27,8 +27,10 @@ class ViewController: UIViewController {
     //Configure the toggle button for this app.
     func configureToggleButton()-> UIToggleButton{
         let toggleButton = UIToggleButton()
-        toggleButton.setTitleColor(.gray, for: .normal)
-        toggleButton.setTitle("Off", for: .normal)
+        
+        toggleButton.setTitleColor(.lightGray, for: .normal)
+        toggleButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 36)
+        toggleButton.setTitle("OFF", for: .normal)
         toggleButton.addTarget(self, action: #selector(didToggleButton(_:)), for: .touchUpInside)
         return toggleButton
     }
